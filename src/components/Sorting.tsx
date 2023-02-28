@@ -7,50 +7,45 @@ import { ISortingProps } from './comment.types';
 
 const Sorting = ({ commentsList, setCommentsList }: ISortingProps) => {
 
-    // const [likeSort, setLikeSort] = useState(false)
-
-
-
-
+    const [sortingBy, setSortingBy] = useState<Record<'likes' | 'time' | any, boolean | undefined>>({})
     const handleSorting = (value: 'likes' | 'time') => {
-        if (value === 'likes') {
+        if (!sortingBy[value]) {
             setCommentsList(
-                (preV) => {
-                    const sortedComments = preV.sort((a, b) => {
-
-                        return (b?.likes || 0) - (a?.likes || 0)
-
-                    }
-
-                    )
-                    return { ...sortedComments }
-                }
-            )
-            // setLikeSort(true)
-        }
-        else if (value === 'time') {
-            setCommentsList(
-                (preV) => preV.sort((a, b) => {
-                    return (a?.likes || 0) - (b?.likes || 0)
+                (preV) => [...preV].sort((a, b) => {
+                    return (b[value] || 0) - (a[value] || 0)
                 })
             )
+            setSortingBy({
+                ...{},
+
+                [value]: true
+            })
         }
-        // setLikeSort(preV => !preV)
+        else {
+            setCommentsList(
+                (preV) => [...preV].sort((a, b) => {
+                    return (a[value] || 0) - (b[value] || 0)
+                })
+            )
+            setSortingBy({
+                ...{},
+                [value]: false
+            })
+        }
     }
 
-    console.log(commentsList, 'commentsList')
 
     return (
         <div className={styles.container}>
             <h4>Sort -</h4>
             <div>
-                <button className={styles.buttonhandler} onClick={() => handleSorting('likes')}>By likes</button>
+                <button className={`${styles.buttonhandler} ${sortingBy.likes ? styles.activeButton : ''}`} onClick={() => handleSorting('likes')}>By likes</button>
             </div>
             <div>
-                <button className={styles.buttonhandler} onClick={() => handleSorting('time')}>By time</button>
+                <button className={`${styles.buttonhandler} ${sortingBy.time ? styles.activeButton : ''}`} onClick={() => handleSorting('time')}>By time</button>
             </div>
         </div>
     )
 }
 
-export default Sorting
+export default Sorting;

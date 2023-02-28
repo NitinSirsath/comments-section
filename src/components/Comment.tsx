@@ -50,7 +50,7 @@ const Comment = ({ commentText }: ICommentProps) => {
             <div>
                 <div className={styles.userNameContainer}>
                     <p style={{ color: 'blueviolet', fontSize: '14px' }}>Clueless-Kun</p>
-                    <p className={styles.secondaryText}>{commentText.time}</p>
+                    <p className={styles.secondaryText}>{new Date(commentText.time || 0).toLocaleDateString()}</p>
                 </div>
                 <p className={styles.commentBodyText}>{commentText.body}</p>
                 <div className={styles.commentAdditionalInfoContiner}>

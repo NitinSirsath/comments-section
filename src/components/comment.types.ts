@@ -8,7 +8,7 @@ export interface GlobalContextValue {
 }
 export interface ICommentText {
   id: number;
-  time?: ReactNode;
+  time?: number;
   likes?: number;
   dislikes?: number;
   body?: string;
