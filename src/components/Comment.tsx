@@ -19,6 +19,12 @@ const Comment = ({commentText}: Props) => {
         <p>{commentText.body}</p>
         <button onClick={() => setIsReply(!isReply)}>{isReply? 'cancel' : 'reply'}</button>
         {isReply && <CommentInput onComment={onComment}/>}
+        <div>
+            {reply?.map((commentText) => {
+                return <Comment commentText={commentText}/>
+              
+            })}
+        </div>
     </div>
   )
 } 
