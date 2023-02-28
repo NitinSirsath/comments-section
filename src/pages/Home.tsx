@@ -1,43 +1,18 @@
-import React, {ReactNode, useState, useEffect, useContext } from 'react'
+import React, { ReactNode, useState, useEffect, useContext } from 'react'
 import { globalContext } from '../App';
 import Comment from '../components/Comment';
+import { ICommentText } from '../components/comment.types';
 import CommentInput from '../components/CommentInput'
 import Sorting from '../components/Sorting';
 import styles from '../styles/home.module.css'
 
-// interface Comment {
-//     id: number
-//     body: string
-//     time?: number
-//     likes?: number
-//     dislikes?: number
-//     replies?: Array<Comment>
-// }
 
-// const dummyComments: Array<Comment> = [
-//     {
-//         id: 1,
-//         body: 'Dude thank you so much for this, now if only it was possible to somehow get this to stay as the top discussion so that new poeple dont make these mistakes',
-//         replies : [],
-//         time : 18.39,
-//         likes : 10,
-//         dislikes : 0
-//     },
-//     {
-//         id: 2,
-//         body: 'If I could recommend this discsussion to new poeple, I would',
-//         replies : [],
-//         time : 19.39,
-//         likes : 12,
-//         dislikes : 0
-//     },
-// ]
 
-const Home = (props: Props) => {
+const Home = () => {
 
     const { commentsList, setCommentsList } = useContext(globalContext)
 
-    
+
 
     //   useEffect(() => {
     //     const now = new Date();
@@ -60,7 +35,7 @@ const Home = (props: Props) => {
 
     //   console.log(timeString, 'timeString');
 
-    const onComment = (newComment: Comment) => {
+    const onComment = (newComment: ICommentText) => {
 
         setCommentsList((preV: any) => [...preV, newComment])
 
@@ -93,7 +68,7 @@ const Home = (props: Props) => {
             <Sorting commentsList={commentsList} setCommentsList={setCommentsList} />
             {/* <button onClick={() => addComment()} >comment</button> */}
             <div className={styles.commentsLists}>
-                {commentsList.map((commentText: { id: any; time?: ReactNode; likes?: ReactNode; dislikes?: ReactNode; body?: string; replies?: object[]; }) => {
+                {commentsList.map((commentText: ICommentText) => {
                     return <Comment key={commentText.id} commentText={commentText} />
                 })
                 }

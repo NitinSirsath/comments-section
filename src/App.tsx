@@ -1,35 +1,35 @@
-import { createContext, useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { createContext, SetStateAction, useState } from 'react'
+
 import './App.css'
+import { GlobalContextValue, ICommentText } from './components/comment.types'
 import Home from './pages/Home'
 
-export const globalContext = createContext({})
 
-interface Comment {
-  id: number
-  body: string
-  time?: string
-  likes?: number
-  dislikes?: number
-  replies?: Array<Comment>
-}
 
-const dummyComments: Array<Comment> = [
+export const globalContext = createContext<GlobalContextValue>({
+  likes: 0,
+  setLikes: () => { },
+  commentsList: [],
+  setCommentsList: () => { }
+})
+
+
+const dummyComments: ICommentText[] = [
   {
-      id: 1,
-      body: 'Dude thank you so much for this, now if only it was possible to somehow get this to stay as the top discussion so that new poeple dont make these mistakes',
-      replies : [],
-      time : '2/28/2023, 8:18:44 PM',
-      likes : 10,
-      dislikes : 0
+    id: 1,
+    body: 'Dude thank you so much for this, now if only it was possible to somehow get this to stay as the top discussion so that new poeple dont make these mistakes',
+    replies: [],
+    time: '2/28/2023, 8:18:44 PM',
+    likes: 10,
+    dislikes: 0
   },
   {
-      id: 2,
-      body: 'If I could recommend this discsussion to new poeple, I would',
-      replies : [],
-      time : '2/28/2023, 9:18:44 PM',
-      likes : 12,
-      dislikes : 0
+    id: 2,
+    body: 'If I could recommend this discsussion to new poeple, I would',
+    replies: [],
+    time: '2/28/2023, 9:18:44 PM',
+    likes: 12,
+    dislikes: 0
   },
 ]
 
@@ -40,12 +40,12 @@ function App() {
   const [likes, setLikes] = useState(0)
 
   return (
-    <globalContext.Provider value={{ likes, setLikes,commentsList ,setCommentsList}}>
+    <globalContext.Provider value={{ likes, setLikes, commentsList, setCommentsList }}>
       <div className="app">
-      <Home />
-    </div>
+        <Home />
+      </div>
     </globalContext.Provider>
-    
+
   )
 }
 
