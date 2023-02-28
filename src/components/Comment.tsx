@@ -12,6 +12,7 @@ type Props = {
 const Comment = ({ commentText }: Props) => {
     const [isReply, setIsReply] = useState(false)
     const [reply, setReply] = useState(commentText.replies)
+    const [editInput, setEditInput] = useState(false)
     
 
     const { likes, setLikes ,setCommentsList} = useContext(globalContext)
@@ -48,7 +49,7 @@ const Comment = ({ commentText }: Props) => {
                             })
                         )
                     }}><img src={likeIcon} alt="" /></p>
-                    <p className={styles.secondaryText}>{commentText.likes}</p>
+                    <p className={styles.secondaryText}>{commentText.likes} Likes</p>
                     <p className={styles.dislikeIconContainer} onClick={()=> {
                         setCommentsList(
                             preV => preV.map((comment) => {
@@ -62,12 +63,33 @@ const Comment = ({ commentText }: Props) => {
                             })
                         )
                     }}><img src={likeIcon} alt="" /></p>
-                    <p className={styles.secondaryText}>{commentText.dislikes}</p>
+                    <p className={styles.secondaryText}>{commentText.dislikes} Dislikes</p>
                     <p className={styles.secondaryText} onClick={() => setIsReply(preV => !preV)}>{isReply ? 'Cancel' : 'Reply'}</p>
                     <p className={styles.secondaryText} onClick={() => {
                         setCommentsList(preV => preV.filter((comment) => comment.id !== commentText.id))
                     }} >Delete</p>
+                    <p className={styles.secondaryText} onClick={()=> {
+                        setEditInput(preV => !preV)
+                    }}>Edit</p>
                 </div>
+                {
+                        editInput && <div className={styles.editContainer}>
+                            <input className={styles.editableInput} type="text" value={commentText.body} onChange={(e) => {
+                                setCommentsList(preV => preV.map((comment) => {
+                                    if (comment.id === commentText.id) {
+                                        return {
+                                            ...comment,
+                                            body: e.target.value
+                                        }
+                                    }
+                                    return comment
+                                }))
+                            }} />
+                            <button className={styles.editButton} onClick={()=> {
+                                setEditInput(preV => !preV)
+                            }}>save</button>
+                        </div>
+                    }
                 {isReply && <CommentInput  onComment={onComment} comment={undefined} />}
                 <div >
                     {reply?.map((commentText) => {

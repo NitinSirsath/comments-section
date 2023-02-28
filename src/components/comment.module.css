@@ -49,3 +49,54 @@
     color: #646cff;
     cursor: pointer;
 }
+
+.editContainer{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+
+
+.editableInput{
+    width: 70%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.editableInput:focus{
+    outline: none;
+    border: 1px solid #646cff;
+}
+
+.editableInput::placeholder{
+    color: #ccc;
+}
+
+.editButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+    background-color: #646cff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.editButton:hover{
+    background-color: #535bf2;
+}
+
+.editButton:active{
+    background-color: #646cff;
+}
