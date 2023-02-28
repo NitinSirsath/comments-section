@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Comment from '../components/Comment';
 import CommentInput from '../components/CommentInput'
+import styles from '../styles/home.module.css'
 
 interface Comment {
     id: number
@@ -36,11 +37,10 @@ const Home = (props: Props) => {
     }
 
   return (
-    <div>
-        <h1>comments</h1>
+    <div className={styles.container}>
        <CommentInput onComment={onComment} comments={commentsList}/>
         {/* <button onClick={() => addComment()} >comment</button> */}
-        <div>
+        <div className={styles.commentsLists}>
             {commentsList.map((commentText) => {
                return <Comment commentText={commentText}/>
             })

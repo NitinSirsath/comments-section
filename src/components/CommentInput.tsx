@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
+import styles from './commentInput.module.css'
+import userIcon from '../assets/user.png'
 
 type Props = {
     onComment: (newComment: Comment) => void
-    comment: Comment
+    comments: Array<Comment> 
 }
 
 const CommentInput = ({onComment,comments}: Props) => {
@@ -11,14 +13,15 @@ const CommentInput = ({onComment,comments}: Props) => {
   
 
   return (
-    <div>
-         <input type="text" 
+    <div className={styles.container}>
+        <img src={userIcon} alt="user" height={40}/>
+         <input className={styles.inputField} placeholder='Join the Comment Section' type="text" 
             value={commentBody}
             onChange={(e) => setCommentBody(e.target.value)}
         />
-        <button onClick={() => {
+        <button className={styles.buttonhandler} onClick={() => {
             onComment({
-                // id: comments?.length + 1,
+                id: comments?.length + 1,
                 body: commentBody,
                 replies: [],
             });

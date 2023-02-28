@@ -1,0 +1,38 @@
+.container{
+        /* margin-left: 100px; */
+        padding-left: 10px;
+        display: flex;
+        gap: 10px;
+        margin-top: 24px;
+        margin-bottom: 20px;
+        border-left: 1px solid rgb(224, 224, 224);
+    }
+    
+    .likeIconContainer{
+        /* background-color: red;
+        width: 30px; */
+    }
+    
+    .commentAdditionalInfoContiner{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+}
+
+.userNameContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.secondaryText{
+    color: #a4a3a3;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 550;
+}
+
+.secondaryText:hover{
+    color: #646cff;
+    cursor: pointer;
+}
