@@ -64,7 +64,9 @@ const Comment = ({ commentText }: Props) => {
                     }}><img src={likeIcon} alt="" /></p>
                     <p className={styles.secondaryText}>{commentText.dislikes}</p>
                     <p className={styles.secondaryText} onClick={() => setIsReply(preV => !preV)}>{isReply ? 'Cancel' : 'Reply'}</p>
-                    <p className={styles.secondaryText}>Delete</p>
+                    <p className={styles.secondaryText} onClick={() => {
+                        setCommentsList(preV => preV.filter((comment) => comment.id !== commentText.id))
+                    }} >Delete</p>
                 </div>
                 {isReply && <CommentInput  onComment={onComment} comment={undefined} />}
                 <div >
