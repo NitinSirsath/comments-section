@@ -32,9 +32,10 @@ const CommentInput = ({ onComment, comments }: ICommentInputProps) => {
     return (
         <div className={styles.container}>
             <img src={userIcon} alt="user" height={40} />
-            <input className={styles.inputField} placeholder='Join the Comment Section' type="text"
+            <textarea maxLength={200} className={styles.inputField} placeholder='Join the discussion!'
                 value={commentBody}
                 onChange={(e) => setCommentBody(e.target.value)}
+                rows={1}
             />
             <button className={styles.buttonhandler} onClick={() => {
                 handleSubmit()
