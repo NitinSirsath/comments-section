@@ -4,28 +4,38 @@ import styles from './sorting.module.css'
 import { ISortingProps } from './comment.types';
 
 
+
 const Sorting = ({ commentsList, setCommentsList }: ISortingProps) => {
 
-    const [likeSort, setLikeSort] = useState(false)
+    // const [likeSort, setLikeSort] = useState(false)
+
+
+
 
     const handleSorting = (value: 'likes' | 'time') => {
-        if (!likeSort) {
+        if (value === 'likes') {
             setCommentsList(
-                (preV) => preV.sort((a, b) => {
-                    return (b?.likes || 0) - (a?.likes || 0)
-                })
-            )
-            setLikeSort(true)
-        }
+                (preV) => {
+                    const sortedComments = preV.sort((a, b) => {
 
-        else {
+                        return (b?.likes || 0) - (a?.likes || 0)
+
+                    }
+
+                    )
+                    return { ...sortedComments }
+                }
+            )
+            // setLikeSort(true)
+        }
+        else if (value === 'time') {
             setCommentsList(
                 (preV) => preV.sort((a, b) => {
                     return (a?.likes || 0) - (b?.likes || 0)
                 })
             )
-            setLikeSort(false)
         }
+        // setLikeSort(preV => !preV)
     }
 
     console.log(commentsList, 'commentsList')
