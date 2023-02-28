@@ -19,7 +19,7 @@ const dummyComments: ICommentText[] = [
     id: 1,
     body: 'Dude thank you so much for this, now if only it was possible to somehow get this to stay as the top discussion so that new poeple dont make these mistakes',
     replies: [],
-    time: Math.round(new Date("2023/03/05 15:34:00").getTime() / 1000),
+    time: Math.round(new Date('2023-02-09').getTime()),
     likes: 10,
     dislikes: 0
   },
@@ -27,7 +27,7 @@ const dummyComments: ICommentText[] = [
     id: 2,
     body: 'If I could recommend this discsussion to new poeple, I would',
     replies: [],
-    time: Math.round(new Date("2013/09/05 15:34:00").getTime() / 1000),
+    time: Math.round(new Date('2023-02-12').getTime()),
     likes: 12,
     dislikes: 0
   },
