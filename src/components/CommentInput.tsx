@@ -19,7 +19,7 @@ const CommentInput = ({ onComment, comments }: ICommentInputProps) => {
             id: comments?.length + 1,
             body: commentBody,
             replies: [],
-            time: new Date().toLocaleString(),
+            time: Date.now(),
             likes: likes,
             dislikes: 0
 
