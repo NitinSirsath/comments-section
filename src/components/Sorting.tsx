@@ -17,7 +17,6 @@ const Sorting = ({ commentsList, setCommentsList }: ISortingProps) => {
             )
             setSortingBy({
                 ...{},
-
                 [value]: true
             })
         }
