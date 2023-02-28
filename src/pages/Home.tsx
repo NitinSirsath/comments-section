@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Comment from '../components/comment/Comment'
 
 interface Comment {
     id: number
@@ -38,12 +39,8 @@ const Home = (props: Props) => {
         />
         <button onClick={() => addComment()} >comment</button>
         <div>
-            {comments.map((comment) => {
-                return (
-                    <div key={comment.id}>
-                        <p>{comment.body}</p>
-                    </div>
-                )
+            {comments.map((commentText) => {
+               return <Comment commentText={commentText}/>
             })
             }
         </div>
