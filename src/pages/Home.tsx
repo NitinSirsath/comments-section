@@ -1,19 +1,22 @@
 import React, {useState} from 'react'
-import Comment from '../components/comment/Comment'
+import Comment from '../components/Comment'
 
 interface Comment {
     id: number
     body: string
+    replies?: Array<Comment>
 }
 
 const dummyComments: Array<Comment> = [
     {
         id: 1,
         body: 'hello',
+        replies : [],
     },
     {
         id: 2,
         body: 'hi',
+        replies : [],
     },
 ]
 
