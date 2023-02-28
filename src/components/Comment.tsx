@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { ReactNode, useContext, useState } from 'react'
 import CommentInput from './CommentInput'
 import styles from './comment.module.css'
 import userIcon from '../assets/user.png'
@@ -6,7 +6,15 @@ import likeIcon from '../assets/like.png'
 import { globalContext } from '../App'
 
 type Props = {
-    commentText: { body: string, replies: Array<object> }
+    commentText: {
+        time: ReactNode
+        id: any
+        likes: ReactNode
+        dislikes: ReactNode 
+        body: string
+        replies: Array<object> 
+}
+setCommentsList: (newComment: object) => void
 }
 
 const Comment = ({ commentText }: Props) => {
@@ -15,9 +23,9 @@ const Comment = ({ commentText }: Props) => {
     const [editInput, setEditInput] = useState(false)
     
 
-    const { likes, setLikes ,setCommentsList} = useContext(globalContext)
+    const {setCommentsList} = useContext(globalContext)
 
-    console.log('likes', likes)
+   
 
     const onComment = (newComment: object) => {
         setReply(preV => [...preV, newComment])
@@ -25,7 +33,7 @@ const Comment = ({ commentText }: Props) => {
     }
 
     return (
-        <div className={styles.container} style={{ marginLeft: '10px' }}>
+        <div  className={styles.container} style={{ marginLeft: '10px' }}>
             <div>
                 <img src={userIcon} height={24} alt="usericon" />
             </div>
@@ -38,7 +46,7 @@ const Comment = ({ commentText }: Props) => {
                 <div className={styles.commentAdditionalInfoContiner}>
                     <p className={styles.likeIconContainer} onClick={()=> {
                         setCommentsList(
-                            preV => preV.map((comment) => {
+                            (preV: { id: any; likes: number }[]) => preV.map((comment: { id: any; likes: number }) => {
                                 if (comment.id === commentText.id) {
                                     return {
                                         ...comment,
@@ -52,7 +60,7 @@ const Comment = ({ commentText }: Props) => {
                     <p className={styles.secondaryText}>{commentText.likes} Likes</p>
                     <p className={styles.dislikeIconContainer} onClick={()=> {
                         setCommentsList(
-                            preV => preV.map((comment) => {
+                            ( preV: { id: any; dislikes: number }[]) => preV.map((comment: { id: any; dislikes: number }) => {
                                 if (comment.id === commentText.id) {
                                     return {
                                         ...comment,
@@ -66,7 +74,7 @@ const Comment = ({ commentText }: Props) => {
                     <p className={styles.secondaryText}>{commentText.dislikes} Dislikes</p>
                     <p className={styles.secondaryText} onClick={() => setIsReply(preV => !preV)}>{isReply ? 'Cancel' : 'Reply'}</p>
                     <p className={styles.secondaryText} onClick={() => {
-                        setCommentsList(preV => preV.filter((comment) => comment.id !== commentText.id))
+                        setCommentsList((preV: any[]) => preV.filter((comment: { id: any }) => comment.id !== commentText.id))
                     }} >Delete</p>
                     <p className={styles.secondaryText} onClick={()=> {
                         setEditInput(preV => !preV)
@@ -75,7 +83,7 @@ const Comment = ({ commentText }: Props) => {
                 {
                         editInput && <div className={styles.editContainer}>
                             <input className={styles.editableInput} type="text" value={commentText.body} onChange={(e) => {
-                                setCommentsList(preV => preV.map((comment) => {
+                                setCommentsList((preV: { id: any }[]) => preV.map((comment: { id: any }) => {
                                     if (comment.id === commentText.id) {
                                         return {
                                             ...comment,
@@ -93,6 +101,8 @@ const Comment = ({ commentText }: Props) => {
                 {isReply && <CommentInput  onComment={onComment} comment={undefined} />}
                 <div >
                     {reply?.map((commentText) => {
+                        console.log(reply, 'reply');
+                        
                         return <Comment commentText={commentText} />
 
                     })}

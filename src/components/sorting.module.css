@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 13px 80px;
+    gap: 10px;
+}
+
+.buttonhandler{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 30px;
+    background-color: #a7a7a7;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
