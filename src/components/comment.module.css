@@ -11,6 +11,12 @@
     .likeIconContainer{
         /* background-color: red;
         width: 30px; */
+        cursor: pointer;
+    }
+    
+    .dislikeIconContainer{
+        cursor: pointer;
+        transform: scale(1, -1);
     }
     
     .commentAdditionalInfoContiner{
@@ -23,6 +29,13 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.commentBodyText{
+    font-size: 14px;
+    font-weight: 500;
+    color: #373737;
+    margin: 7px 0px;
 }
 
 .secondaryText{
