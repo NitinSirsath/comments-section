@@ -1,4 +1,4 @@
-import { createContext, SetStateAction, useState } from 'react'
+import { createContext, SetStateAction, useEffect, useState } from 'react'
 
 import './App.css'
 import { GlobalContextValue, ICommentText } from './components/comment.types'
@@ -38,6 +38,11 @@ const dummyComments: ICommentText[] = [
 function App() {
   const [commentsList, setCommentsList] = useState(dummyComments)
   const [likes, setLikes] = useState(0)
+
+  useEffect(() => {
+    return localStorage.setItem('commentsList', JSON.stringify(commentsList))
+  }, [commentsList]);
+
 
   return (
     <globalContext.Provider value={{ likes, setLikes, commentsList, setCommentsList }}>
