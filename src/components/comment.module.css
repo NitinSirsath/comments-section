@@ -1,102 +1,165 @@
-.container{
-        /* margin-left: 100px; */
-        padding-left: 10px;
-        display: flex;
-        gap: 10px;
-        margin-top: 24px;
-        margin-bottom: 20px;
-        border-left: 1px solid rgb(224, 224, 224);
-    }
-    
-    .likeIconContainer{
-        /* background-color: red;
-        width: 30px; */
-        cursor: pointer;
-    }
-    
-    .dislikeIconContainer{
-        cursor: pointer;
-        transform: scale(1, -1);
-    }
-    
-    .commentAdditionalInfoContiner{
-        display: flex;
-        align-items: center;
-        gap: 10px;
+.container {
+  /* margin-left: 100px; */
+  padding-left: 10px;
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  margin-bottom: 20px;
+  border-left: 1px solid rgb(224, 224, 224);
 }
 
-.userNameContainer{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+@media screen and (max-width: 768px) {
+  .container {
+    margin-left: 8px;
+    padding-left: 5px;
+    gap: 5px;
+  }
 
-.commentBodyText{
-    font-size: 14px;
-    font-weight: 500;
-    color: #373737;
-    margin: 7px 0px;
-}
-
-.secondaryText{
-    color: #a4a3a3;
+  .commentBodyText {
     font-size: 12px;
-    cursor: pointer;
-    font-weight: 550;
+  }
 }
 
-.secondaryText:hover{
-    color: #646cff;
-    cursor: pointer;
+@media screen and (max-width: 468px) {
+  .container {
+    margin-left: 4px;
+    padding-left: 3px;
+    gap: 4px;
+  }
+
+  .commentBodyText {
+    font-size: 10px;
+  }
+
+  .secondaryText {
+    font-size: 10px;
+  }
+
+  .userNameContainer {
+    gap: 5px;
+  }
+
+  .commentAdditionalInfoContiner {
+    gap: 1px;
+  }
+
+  .likeIconContainer {
+    width: 20px;
+  }
+
+  .dislikeIconContainer {
+    width: 20px;
+  }
+
+  .commentBodyText {
+    margin: 5px 0px;
+  }
+
+  .commentAdditionalInfoContiner {
+    margin-top: 5px;
+  }
+
+  .editContainer {
+    gap: 5px;
+  }
+
+  .editableInput {
+    width: 60%;
+  }
+
+  .buttonhandler {
+    padding: 5px;
+    height: 35px;
+    font-size: 12px;
+  }
 }
 
-.editContainer{
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+.likeIconContainer {
+  /* background-color: red;
+        width: 30px; */
+  cursor: pointer;
 }
 
-
-
-
-.editableInput{
-    width: 70%;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 0 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
+.dislikeIconContainer {
+  cursor: pointer;
+  transform: scale(1, -1);
 }
 
-.editableInput:focus{
-    outline: none;
-    border: 1px solid #646cff;
+.commentAdditionalInfoContiner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.editableInput::placeholder{
-    color: #ccc;
+.userNameContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.editButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    height: 40px;
-    background-color: #646cff;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.commentBodyText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #373737;
+  margin: 7px 0px;
 }
 
-.editButton:hover{
-    background-color: #535bf2;
+.secondaryText {
+  color: #a4a3a3;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 550;
 }
 
-.editButton:active{
-    background-color: #646cff;
+.secondaryText:hover {
+  color: #646cff;
+  cursor: pointer;
+}
+
+.editContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.editableInput {
+  width: 70%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.editableInput:focus {
+  outline: none;
+  border: 1px solid #646cff;
+}
+
+.editableInput::placeholder {
+  color: #ccc;
+}
+
+.editButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 40px;
+  background-color: #646cff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.editButton:hover {
+  background-color: #535bf2;
+}
+
+.editButton:active {
+  background-color: #646cff;
 }

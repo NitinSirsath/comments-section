@@ -6,6 +6,12 @@
   gap: 10px;
 }
 
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 13px 20px;
+  }
+}
+
 .buttonhandler {
   display: flex;
   justify-content: center;
